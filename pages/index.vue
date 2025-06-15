@@ -1,22 +1,18 @@
 <template>
-    <div>
-        <h1 class="text-red-500">{{ message }}</h1>
+    <div class="grid grid-cols-[3fr_2fr] items-center h-full gap-x-14">
+      <Message />
+      <FormLogin />
     </div>
 </template>
 
 <script setup>
-const { data, pending, error } = await useFetch('/api/guestbook')
-
-const message = computed(() => {
-    if (pending.value) return 'Loading...'
-    if (error.value) return 'Error'
-    return data.value?.message
-})
+import FormLogin from '../components/forms/FormLogin.vue';
+import Message from '../components/scroll/Message.vue';
 
 useHead({
-  title: 'Login | Guestbook App',
+  title: 'Reeze | Guestbook App',
   meta: [
-    { name: 'description', content: 'Halaman login untuk aplikasi guestbook' }
+    { name: 'description', content: 'Guestbook Application with NuxtJS' }
   ]
 })
 </script>
